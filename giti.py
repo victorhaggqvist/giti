@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # coding=utf-8
 import os
 import sys
@@ -23,7 +24,6 @@ def store(file):
   """
   Store content in file
   """
-  print "storing"
   if os.path.isfile(".gitignore") == True:
     try:
       merge = input("Do you want to merge with existing .gitignore [Y/n]:")
@@ -40,7 +40,7 @@ def store(file):
     f.write(gitignore)
     print ".gitignore baked :)"
   else:
-    print "Did nothing your .gitignore lives like before"
+    print "Did nothing, your .gitignore lives like before"
 
 
 
@@ -63,6 +63,6 @@ def main():
   if len(sys.argv) == 2:
     giti(sys.argv[1])
   else:
-    print "Usage giti [language or stuff]"
+    print "Usage: giti [language or stuff]"
 
 main()
