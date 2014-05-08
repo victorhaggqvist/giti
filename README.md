@@ -1,7 +1,7 @@
 giti
 ====
 
-A python command line tool for getting .gitignore files. Inspired by https://github.com/msfeldstein/gitignore
+A python command line tool for getting .gitignore files. Inspired by https://github.com/msfeldstein/gitignore.
 
 #FYI
-This is my first lines Python ever
+These are my first lines Python ever.
