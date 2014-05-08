@@ -5,7 +5,7 @@ import sys
 import urllib2
 
 __author__ = 'Victor Häggqvist'
-__version__ = 0.1
+__version__ = '0.1.1'
 
 
 def gitiglobal(type):
@@ -16,8 +16,13 @@ def gitiglobal(type):
   try:
     gifile =  urllib2.urlopen("https://raw.githubusercontent.com/github/gitignore/master/Global/"+type+".gitignore").read()
     store(gifile)
-  except:
-    print "Not found in global either"
+  except urllib2.HTTPError as e:
+    if e.code == 404:
+      print "Not found in global either"
+    else:
+      print "Got unexpected answer from Github, you better check on them..."
+
+
 
 
 def store(file):
@@ -54,9 +59,14 @@ def giti(type):
   try:
     gifile = urllib2.urlopen("https://raw.githubusercontent.com/github/gitignore/master/"+type+".gitignore").read()
     store(gifile)
-  except:
-    print "not found in master"
-    gitiglobal(type)
+  except urllib2.HTTPError as e:
+    if e.code == 404:
+      print "Not found in master"
+      gitiglobal(type)
+    else:
+      print "Got unexpected answer from Github, you better check on them..."
+
+
 
 
 def main():
