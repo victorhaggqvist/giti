@@ -23,8 +23,6 @@ def gitiglobal(type):
       print "Got unexpected answer from Github, you better check on them..."
 
 
-
-
 def store(file):
   """
   Store content in file
@@ -46,7 +44,6 @@ def store(file):
     print ".gitignore baked :)"
   else:
     print "Did nothing, your .gitignore lives like before"
-
 
 
 def giti(type):
