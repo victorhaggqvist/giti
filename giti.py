@@ -67,12 +67,15 @@ def giti(type):
       print "Got unexpected answer from Github, you better check on them..."
 
 
+def help():
+  print "Usage: giti [language or stuff]"
+  print "giti v"+__version__
 
 
 def main():
   if len(sys.argv) == 2:
     giti(sys.argv[1])
   else:
-    print "Usage: giti [language or stuff]"
+    help()
 
 main()
