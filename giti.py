@@ -2,7 +2,7 @@
 # coding=utf-8
 import os.path
 import sys
-import urllib2
+import urllib2 as urllib
 
 __author__ = 'Victor Häggqvist'
 __version__ = '0.1.1'
@@ -14,9 +14,9 @@ def gitiglobal(type):
   """
   print "Fetching .gitignore for", type,"in Global"
   try:
-    gifile =  urllib2.urlopen("https://raw.githubusercontent.com/github/gitignore/master/Global/"+type+".gitignore").read()
+    gifile =  urllib.urlopen("https://raw.githubusercontent.com/github/gitignore/master/Global/"+type+".gitignore").read()
     store(gifile)
-  except urllib2.HTTPError as e:
+  except urllib.HTTPError as e:
     if e.code == 404:
       print "Not found in global either"
     else:
@@ -54,9 +54,9 @@ def giti(type):
   print "Fetching .gitignore for", type
 
   try:
-    gifile = urllib2.urlopen("https://raw.githubusercontent.com/github/gitignore/master/"+type+".gitignore").read()
+    gifile = urllib.urlopen("https://raw.githubusercontent.com/github/gitignore/master/"+type+".gitignore").read()
     store(gifile)
-  except urllib2.HTTPError as e:
+  except urllib.HTTPError as e:
     if e.code == 404:
       print "Not found in master"
       gitiglobal(type)
