@@ -3,10 +3,31 @@
 import os.path
 import sys
 import urllib2 as urllib
+import json
 
 __author__ = 'Victor Häggqvist'
 __version__ = '0.1.1'
 
+def searchGithub(query):
+  url = "https://api.github.com/search/code?q="+query+"+repo:github/gitignore"
+  accept = "application/vnd.github.v3+json"
+  userAgent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.8 Safari/537.36"
+
+  request = urllib.Request(url, headers={"Accept": accept, "User-Agent": userAgent})
+
+  content = ""
+  try:
+    content = urllib.urlopen(request).read()
+  except urllib.HTTPError as e:
+    print "Some thing faild... HTTP error:",e.code
+
+  response = json.loas(content)
+  if response["total_count"] == 0:
+    print query,"not found"
+  else:
+    print "Got",response["total_count"],"hits"
+    for item in response["items"]:
+      print item["name"]
 
 def gitiglobal(type):
   """
