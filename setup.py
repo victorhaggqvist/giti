@@ -5,7 +5,7 @@ setup(
     version='0.2.0',
     packages=[],
     url='https://github.com/victorhaggqvist/giti',
-    scripts=['bin/giti'],
+    scripts=['giti'],
     license='MIT',
     author='Victor Häggqvist',
     author_email='victor@snilius.com',
