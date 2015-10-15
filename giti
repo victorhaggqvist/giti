@@ -109,17 +109,18 @@ def giti(kind: str):
         print('Found no exact match, let\'s give searching a try...')
         filepath = search_for_file(kind)
         if not filepath:
-            print('Can\'t help any more, exiting')
-            print('No changes made')
-            exit(0)
+            terminate_gracefully()
         gifile = get_ignore_file(filepath, path=True)
 
     if not gifile:
-        print('Can\'t help any more, exiting')
-        print('No changes made')
-        exit(0)
+        terminate_gracefully()
 
     save_file(gifile)
+
+def terminate_gracefully():
+    print('Can\'t help any more, exiting')
+    print('No changes made')
+    exit(0)
 
 
 def show_help():
