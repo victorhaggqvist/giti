@@ -53,6 +53,7 @@ def search_for_file(kind: str) -> str:
     except TypeError:
         return None
     except KeyboardInterrupt:
+        print('\n')
         return None
 
     if -1 < choice < len(cont['items']):
