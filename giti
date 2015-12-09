@@ -89,12 +89,16 @@ def save_file(file: str):
             merge = 'y' if merge == '' else 'n'
         except KeyError:
             merge = 'y'
+        except KeyboardInterrupt:
+            terminate_gracefully()
 
         if merge.lower() == "n":
             try:
                 replace = input('Do you want to replace existing .gitignore [y/N]: ')
             except KeyError:
                 replace = 'n'
+            except KeyboardInterrupt:
+                terminate_gracefully()
 
     if merge.lower() == 'y':
         with open('.gitignore', 'a') as f:
