@@ -43,6 +43,13 @@ def search_for_file(kind: str) -> str:
     r = requests.get('https://api.github.com/search/code?q=repo:github/gitignore %s' % kind, headers=headers)
     cont = r.json()
 
+    # Check is any result match when ignoring case
+    for i in range(0, len(cont['items'])):
+        name = cont['items'][i]['name'].split('.')[0]
+        if name.lower() == kind.lower():
+            print("Found match {}".format(name))
+            return cont['items'][i]['path']
+
     print('One of these might be good:')
     for i in range(0, len(cont['items'])):
         name = cont['items'][i]['name'].split('.')[0]
