@@ -50,6 +50,10 @@ def search_for_file(kind: str) -> str:
             print("Found match {}".format(name))
             return cont['items'][i]['path']
 
+    if len(cont['items']) < 1:
+        print("Search found nothing")
+        return None
+
     print('One of these might be good:')
     for i in range(0, len(cont['items'])):
         name = cont['items'][i]['name'].split('.')[0]
