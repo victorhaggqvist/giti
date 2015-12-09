@@ -5,7 +5,7 @@ import sys
 import requests
 
 __author__ = 'Victor Häggqvist'
-__version__ = '0.2.2'
+__version__ = '0.3.0'
 
 
 def repo_url(kind: str, global_dir=False) -> str:
